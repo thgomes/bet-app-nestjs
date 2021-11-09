@@ -1,0 +1,10 @@
+{
+  "type": "pg",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "secret",
+  "database": "ProvaNest",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true
+}
