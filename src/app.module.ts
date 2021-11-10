@@ -8,7 +8,6 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { GameModule } from './game/game.module';
 import { BetModule } from './bet/bet.module';
-import { ProfileService } from './profile/profile.service';
 import { ProfileModule } from './profile/profile.module';
 
 @Module({
@@ -25,6 +24,6 @@ import { ProfileModule } from './profile/profile.module';
     ProfileModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ProfileService],
+  providers: [AppService],
 })
 export class AppModule {}

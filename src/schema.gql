@@ -35,6 +35,11 @@ type AuthType {
   token: String!
 }
 
+type Profile {
+  id: ID!
+  type: String!
+}
+
 type Query {
   users: [User!]!
   user(id: String!): User!
@@ -43,6 +48,8 @@ type Query {
   game(id: String!): Game!
   bets: [Bet!]!
   bet(id: String!): Bet!
+  profiles: [Profile!]!
+  profile(id: String!): Profile!
 }
 
 type Mutation {
@@ -56,6 +63,9 @@ type Mutation {
   createBet(data: CreateBetInput!): Bet!
   updateBet(data: UpdateBetInput!, id: String!): Bet!
   deleteBet(id: String!): Boolean!
+  createProfile(data: CreateProfileInput!): Profile!
+  updateProfile(data: UpdateProfileInput!, id: String!): Profile!
+  deleteProfile(id: String!): Boolean!
 }
 
 input CreateUserInput {
@@ -105,4 +115,12 @@ input UpdateBetInput {
   gameId: String
   selectedNumbers: String
   price: Float
+}
+
+input CreateProfileInput {
+  type: String!
+}
+
+input UpdateProfileInput {
+  type: String!
 }
