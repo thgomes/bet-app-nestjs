@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Game } from 'src/game/game.entity';
+import { User } from 'src/user/user.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
 @Entity()
@@ -19,4 +21,10 @@ export class Bet {
 
   @Column()
   selectedNumbers: string;
+
+  @ManyToOne(() => Game)
+  game: Game;
+
+  @ManyToOne(() => User)
+  user: User;
 }

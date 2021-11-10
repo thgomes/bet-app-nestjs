@@ -2,17 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type User {
-  id: ID!
-  name: String!
-  email: String!
-}
-
-type AuthType {
-  user: User!
-  token: String!
-}
-
 type Game {
   id: ID!
   type: String!
@@ -21,6 +10,7 @@ type Game {
   price: Float!
   maxNumber: Float!
   color: String!
+  users: [Bet!]!
 }
 
 type Bet {
@@ -29,6 +19,20 @@ type Bet {
   gameId: String!
   price: Float!
   selectedNumbers: String!
+  game: Game!
+  user: User!
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  users: [Bet!]!
+}
+
+type AuthType {
+  user: User!
+  token: String!
 }
 
 type Query {
