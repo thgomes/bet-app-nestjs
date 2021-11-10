@@ -24,7 +24,6 @@ export class ProfileResolver {
     return profile;
   }
 
-  @UseGuards(GqlAuthGuard)
   @Mutation(() => Profile)
   async createProfile(
     @Args('data') data: CreateProfileInput,

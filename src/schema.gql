@@ -2,6 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Profile {
+  id: ID!
+  type: String!
+  users: [User!]!
+}
+
 type Game {
   id: ID!
   type: String!
@@ -27,17 +33,14 @@ type User {
   id: ID!
   name: String!
   email: String!
+  profileId: Float!
+  profile: Profile!
   users: [Bet!]!
 }
 
 type AuthType {
   user: User!
   token: String!
-}
-
-type Profile {
-  id: ID!
-  type: String!
 }
 
 type Query {
