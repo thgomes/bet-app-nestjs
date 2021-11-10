@@ -10,6 +10,7 @@ import { GqlAuthGuard } from 'src/auth/auth.guard';
 export class UserResolver {
   constructor(private userService: UserService) {}
 
+  @UseGuards(GqlAuthGuard)
   @Query(() => [User])
   async users(): Promise<User[]> {
     const users = await this.userService.findAllUsers();
@@ -23,6 +24,7 @@ export class UserResolver {
     return user;
   }
 
+  @UseGuards(GqlAuthGuard)
   @Query(() => User)
   async userByEmail(@Args('email') email: string): Promise<User> {
     const user = await this.userService.getUserByEmail(email);
@@ -35,6 +37,7 @@ export class UserResolver {
     return user;
   }
 
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => User)
   async updateUser(
     @Args('id') id: string,
@@ -44,6 +47,7 @@ export class UserResolver {
     return user;
   }
 
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => Boolean)
   async deleteUser(@Args('id') id: string): Promise<boolean> {
     const deleted = await this.userService.deleteUser(id);
