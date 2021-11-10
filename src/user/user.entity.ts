@@ -24,7 +24,7 @@ export class User {
   email: string;
 
   @Column({})
-  profileId: number;
+  profileId: string;
 
   @Column({
     transformer: hashPasswordTransform,

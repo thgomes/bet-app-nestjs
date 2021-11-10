@@ -33,7 +33,7 @@ type User {
   id: ID!
   name: String!
   email: String!
-  profileId: Float!
+  profileId: String!
   profile: Profile!
   users: [Bet!]!
 }
@@ -74,12 +74,14 @@ type Mutation {
 input CreateUserInput {
   name: String!
   email: String!
+  profileId: String!
   password: String!
 }
 
 input UpdateUserInput {
   name: String
   email: String
+  profileId: String
   password: String
 }
 
