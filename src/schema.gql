@@ -23,12 +23,22 @@ type Game {
   color: String!
 }
 
+type Bet {
+  id: ID!
+  userId: String!
+  gameId: String!
+  price: Float!
+  selectedNumbers: String!
+}
+
 type Query {
   users: [User!]!
   user(id: String!): User!
   userByEmail(email: String!): User!
   games: [Game!]!
   game(id: String!): Game!
+  bets: [Bet!]!
+  bet(id: String!): Bet!
 }
 
 type Mutation {
@@ -39,6 +49,9 @@ type Mutation {
   createGame(data: CreateGameInput!): Game!
   updateGame(data: UpdateGameInput!, id: String!): Game!
   deleteGame(id: String!): Boolean!
+  createBet(data: CreateBetInput!): Bet!
+  updateBet(data: UpdateBetInput!, id: String!): Bet!
+  deleteBet(id: String!): Boolean!
 }
 
 input CreateUserInput {
@@ -74,4 +87,18 @@ input UpdateGameInput {
   range: Float
   price: Float
   maxNumber: Float
+}
+
+input CreateBetInput {
+  userId: String!
+  gameId: String!
+  selectedNumbers: String!
+  price: Float!
+}
+
+input UpdateBetInput {
+  userId: String
+  gameId: String
+  selectedNumbers: String
+  price: Float
 }
