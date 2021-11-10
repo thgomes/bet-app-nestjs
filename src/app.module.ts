@@ -8,6 +8,8 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { GameModule } from './game/game.module';
 import { BetModule } from './bet/bet.module';
+import { ProfileService } from './profile/profile.service';
+import { ProfileModule } from './profile/profile.module';
 
 @Module({
   imports: [
@@ -20,8 +22,9 @@ import { BetModule } from './bet/bet.module';
     AuthModule,
     GameModule,
     BetModule,
+    ProfileModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ProfileService],
 })
 export class AppModule {}
