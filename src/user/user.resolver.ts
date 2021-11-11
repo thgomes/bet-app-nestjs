@@ -11,7 +11,6 @@ import { AdminGuard } from 'src/auth/admin.guard';
 export class UserResolver {
   constructor(private userService: UserService) {}
 
-  @UseGuards(AdminGuard)
   @UseGuards(GqlAuthGuard)
   @Query(() => [User])
   async users(): Promise<User[]> {
@@ -49,6 +48,7 @@ export class UserResolver {
     return user;
   }
 
+  @UseGuards(AdminGuard)
   @UseGuards(GqlAuthGuard)
   @Mutation(() => Boolean)
   async deleteUser(@Args('id') id: string): Promise<boolean> {

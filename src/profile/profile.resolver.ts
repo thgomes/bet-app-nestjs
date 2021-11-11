@@ -1,5 +1,6 @@
 import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { AdminGuard } from 'src/auth/admin.guard';
 import { GqlAuthGuard } from 'src/auth/auth.guard';
 import { CreateProfileInput } from './dto/create-profile.input';
 import { UpdateProfileInput } from './dto/update-profile.input';
@@ -24,6 +25,8 @@ export class ProfileResolver {
     return profile;
   }
 
+  @UseGuards(AdminGuard)
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => Profile)
   async createProfile(
     @Args('data') data: CreateProfileInput,
@@ -32,6 +35,7 @@ export class ProfileResolver {
     return profile;
   }
 
+  @UseGuards(AdminGuard)
   @UseGuards(GqlAuthGuard)
   @Mutation(() => Profile)
   async updateProfile(
@@ -42,6 +46,7 @@ export class ProfileResolver {
     return profile;
   }
 
+  @UseGuards(AdminGuard)
   @UseGuards(GqlAuthGuard)
   @Mutation(() => Boolean)
   async deleteProfile(@Args('id') id: string): Promise<boolean> {

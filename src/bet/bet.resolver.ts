@@ -5,6 +5,7 @@ import { Bet } from './bet.entity';
 import { BetService } from './bet.service';
 import { GqlAuthGuard } from 'src/auth/auth.guard';
 import { UseGuards } from '@nestjs/common';
+import { AdminGuard } from 'src/auth/admin.guard';
 
 @Resolver()
 export class BetResolver {
@@ -31,6 +32,7 @@ export class BetResolver {
     return bet;
   }
 
+  @UseGuards(AdminGuard)
   @UseGuards(GqlAuthGuard)
   @Mutation(() => Bet)
   async updateBet(
@@ -41,6 +43,7 @@ export class BetResolver {
     return bet;
   }
 
+  @UseGuards(AdminGuard)
   @UseGuards(GqlAuthGuard)
   @Mutation(() => Boolean)
   async deleteBet(@Args('id') id: string): Promise<boolean> {
