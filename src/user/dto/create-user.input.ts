@@ -11,7 +11,7 @@ export class CreateUserInput {
   @IsNotEmpty({ message: 'The email field should not be empty.' })
   email: string;
 
-  @IsEmail()
+  @IsString()
   @IsNotEmpty({ message: 'The profile id field should not be empty.' })
   profileId: string;
 

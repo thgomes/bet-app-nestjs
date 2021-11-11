@@ -13,7 +13,7 @@ export class UpdateUserInput {
   @IsOptional()
   email?: string;
 
-  @IsEmail()
+  @IsString()
   @IsNotEmpty({ message: 'The profile id field should not be empty.' })
   @IsOptional()
   profileId?: string;
