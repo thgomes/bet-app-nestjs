@@ -5,11 +5,13 @@ import { User } from './user.entity';
 import { UpdateUserInput } from './dto/update-user.input';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from 'src/auth/auth.guard';
+import { AdminGuard } from 'src/auth/admin.guard';
 
 @Resolver('User')
 export class UserResolver {
   constructor(private userService: UserService) {}
 
+  @UseGuards(AdminGuard)
   @UseGuards(GqlAuthGuard)
   @Query(() => [User])
   async users(): Promise<User[]> {
